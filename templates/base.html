@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Hunter James – Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href=" {{ url_for('static', filename='styles.css') }}"/>
+</head>
+<body>
+  
+  <!-- Navbar -->  
+  <nav class="navbar" id="navbar">
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="navbar-links">
+      <a href="{{ url_for('home') }}#about">About</a>
+      <a href="{{ url_for('home') }}#experience">Experience</a>
+      <a href="{{ url_for('home') }}#education">Education</a>
+      <a href="{{ url_for('home') }}#skills">Skills</a>
+      <a href="{{ url_for('home') }}#projects">Projects</a>
+      <a href="{{ url_for('home') }}#contact">Contact</a>
+    </div>
+    <button class="toggle-theme-btn" id="themeToggle" aria-label="Toggle Dark Mode">
+      <span class="toggle-theme-btn-indicator" id="themeIndicator">
+        <i class="fas fa-sun" id="themeIcon"></i>
+      </span>
+    </button>
+  </nav>
+
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+    <h2 id="contact" class="fade-section">Contact</h2>
+    <div class="contact-icons">
+      <a href="mailto:hunterj68@gmail.com" title="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+        <a href="#" 
+        class="btn"
+        id="openContact"
+        title="Contact Me">
+          <i class="fas fa-pen-to-square"></i>
+        </a>
+      <a
+      href="https://www.linkedin.com/in/hunter-james-305513187"
+      target="_blank"
+      title="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://www.dropbox.com/scl/fi/f631ux3uxsc9g4uv0epru/HunterJamesResume2025.pdf?rlkey=momiddhbxzaz7iie8lr0hbetp&st=uhr4727f&dl=1"
+         download="HunterJamesResume2025.pdf"
+         class="btn"
+         target="_blank"
+         rel="noopener"
+         title="Download My Resume">
+        <i class="fa-solid fa-file"></i>
+      </a>
+      <a href="#"
+        class="btn"
+        id="openNotes"
+        title="Leave me a note!">
+        <i class="fa-solid fa-message"></i>
+      </a>
+    </div>
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Hunter James
+  </footer>
+
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeContact">&times;</span>
+      <h2>Contact Me</h2>
+      <form method="post" action="{{ url_for('contact.contact') }}" class="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn send-btn">
+          <i class="fas fa-paper plane"></i>Send
+        </button>
+      </form>
+    </div>
+  </div>
+  <div id="notesModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeNotes">&times;</span>
+      <h2>Leave me a Note</h2>
+      <form method="post" action="{{ url_for('notes') }}" class="notes-form">
+        <input type="text" name="nickname" placeholder="Your Nickname" required>
+        <textarea name="content" placeholder="Write a note..." required></textarea>
+        <button type="submit" class="btn add-btn">
+          <i class="fas fa-plus"></i>Add Note
+        </button>
+      </form> 
+      <div class="notes-list">
+        {% for note in notes %}
+        <div class="card" data-note-id="{{ note.id }}">
+          <p class="note-content">{{note.content}}</p>
+          <div class="note-footer">
+            <small> {{obfuscate_name(note.nickname) }} - {{note.date_created.strftime ('%Y-%m-%d %H:%M')}}</small><br>
+            <div class="note-actions">
+            <a href="#"
+           class="edit-btn"
+           data-id="{{note.id}}"
+           data-content="{{note.content}}"
+            data-nickname="{{note.nickname}}">
+             <i class="fa-solid fa-pen"></i>Edit</a>
+            <form method="post" action="{{ url_for('delete', note_id=note.id) }}" class="delete-form">
+             <button type="submit" class="delete-btn">
+             <i class="fa-solid fa-trash"></i>Delete
+             </button>
+            </form>
+            </div>
+          </div>
+        </div>
+        {% else %}
+          <p>No notes yet!</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeEdit">&times;</span>
+      <h2>Edit Note</h2>
+      <form id="editNoteForm">
+        <label for="editNoteContent">Note</label>
+        <textarea name="content" id="editNoteContent" required></textarea>
+        <label for="editNoteNickName">Your Nickname</label>
+        <input type="text" name="nickname" id="editNoteNickname" placeholder="Enter your nickname" required>
+        <button type="submit" class="btn save-btn">
+          <i class="fas fa-save"></i>Save
+        </button>
+      </form>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

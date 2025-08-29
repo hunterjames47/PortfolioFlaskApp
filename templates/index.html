@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+
+{% block title %} Hunter James - Portfolio{% endblock %}
+
+{%block content %}
+  <div class="container">
+    <div class="profile-header">
+      <img
+        src="https://i.imgur.com/E44ohdn.jpeg"
+        class="profile-pic"
+        alt="Professional Headshot"
+      />
+      <div>
+        <h1>Hunter James</h1>
+        <p class="tagline">Data Engineer | Data Analyst | Lifelong Learner</p>
+      </div>
+    </div>
+
+    <h2 id="about" class="fade-section">About Me</h2>
+    <p>
+      I am a data professional with an interest in constant learning and improvement.
+      <br />
+      I have 5+ years experience working in data roles with tasks that align with those of a data analyst,
+      database developer, software specialist, data engineer, and DBA. <br />
+      I have experience with SQL, Python, R, Scala, HTML, ETL tools (SSIS and Azure Data Factory), and various business intelligence programs,
+      applied across manufacturing, healthcare, agriculture, logistics, and government.
+    </p>
+
+    <h2 id="experience">Work Experience</h2>
+    <div class="card fade-section">
+      <strong>SQL Developer</strong> | General Dynamics IT (Contract-to-Hire via TEKsystems) <em>(Nov 2022 – Present)</em>
+      <ul>
+        <li>Initially contracted through TEKsystems to support the CDC; converted to a direct GDIT employee in June 2023</li>
+        <li>Built automated pipelines to ingest and transform flat files into Power BI dashboards, improving reporting speed by 60%</li>
+        <li>Engineered ETL workflows in ADF and SSIS to migrate healthcare data into Azure from SQL Server</li>
+        <li>
+          Utilized Spark and Python in Databricks to process and analyze HL7 datasets with 100M+ records
+        </li>
+        <li>Designed ERDs and created robust database schemas supporting migration and audit needs</li>
+        <li>Created and maintained stored procedures, functions, and triggers to support data migration and app updates</li>
+        <li>Managed full SQL Server stack (Prod, QA, Failover, Dev), ensuring uptime and performance</li>
+        <li>Collaborated with cross-functional teams to ensure seamless database integration for in-house applications</li>
+        <li>Built and documented standardized connection workflows from R, Python, and Databricks to cloud 
+          and on-prem data sources (MS SQL Server, Synapse, Azure Data Lake)</li>
+      </ul>
+    </div>
+    <div class="card fade-section">
+      <strong>Application Specialist</strong> | Aviagen <em>(Jan 2022 – Oct 2022)</em>
+      <ul>
+        <li>Managed SQL databases and user access</li>
+        <li>Beta-tested program updates and designed UI wireframes</li>
+        <li>Provided reports using SQL, Ingres, Crystal Reports, and Qlik</li>
+        <li>Resolved any bugs or technical issues</li>
+        <li>Performed analysis to identify data quality issues</li>
+        <li>Ensured data met regulatory compliance</li>
+      </ul>
+    </div>
+    <div class="card fade-section">
+      <strong>Service Intelligence Analyst</strong> | LG <em>(Jul 2021 – Jan 2022)</em>
+      <ul>
+        <li>Analyzed customer service TTS data with AWS, SAP, SQL, and Python</li>
+        <li>Standardized data categorization to reduce manual reporting time by 70%</li>
+        <li>Utilized Sprinklr to identify areas of interest and current sentiment</li>
+        <li>Built dynamic reports and call center analytics in Excel and BusinessObjects</li>
+        <li>Provided weekly reports identifying key problem products and areas</li>
+      </ul>
+    </div>
+    <div class="card fade-section">
+      <strong>Data Analyst</strong> | Aviagen <em>(May 2020 – Jul 2021)</em>
+      <ul>
+        <li>Used statistics, Excel SQL, R, MATLAB, and Qlik Sense to organize, analyze, and present quality 
+          metrics</li>
+        <li>Worked with Data Manager to troubleshoot logistic issues</li>
+        <li>Created written and verbal reports in support of QA Management for both internal and external 
+          presentations</li>
+        <li>Creation and maintenance of new databases, including a multiple query database aimed at improving 
+          efficiency on a routine report by reducing man hours needed by ~90%.</li>
+        <li>Worked with the QA Data Manager to modernize and partially automate extra-departmental forms, 
+          as well as revise KPI thresholds and presentation of statistics on QA reports</li>
+      </ul>
+    </div>
+
+    <h2 id="education" class="fade-section">Education</h2>
+    <div class="card fade-section">
+      <strong>University of Illinois Urbana-Champaign</strong> (Aug 2024 - August 2026)
+      <ul>
+        <li style="list-style-type: none; padding-left: 0;">MBA</li>
+      </ul>
+    </div>
+    <div class="card fade-section">
+      <strong>Western Governors University</strong> (Mar 2024)
+      <ul>
+        <li style="list-style-type: none; padding-left: 0;">MS Data Analytics </li>
+      </ul>
+    </div>
+    <div class="card fade-section">
+      <strong>Royal Holloway, University of London</strong> (May 2020)
+      <ul>
+        <li style="list-style-type: none; padding-left: 0;">BS Accounting, Finance &amp; Economics</li>
+      </ul>
+    </div>
+
+    <h2 id="skills">Skills</h2>
+    <div class="card fade-section">
+      <ul>
+        <li><strong>Programming Languages &amp; Tools:</strong> Python, R, SQL, Spark, Excel, Power Query, HTML</li>
+        <li><strong>Databases &amp; ETL:</strong> MS SQL Server, SSIS, Alteryx, ADF, Databricks, Redshift, Snowflake, Synapse, Ingres</li>
+        <li><strong>Cloud &amp; Platforms:</strong> Azure, AWS (S3, Redshift), Foundry</li>        
+        <li><strong>Visualization &amp; Reporting:</strong> Power BI, Tableau, Qlik Sense, SAP BusinessObjects</li>
+        <li><strong>Languages:</strong> Spanish (B2 Proficiency)</li>
+      </ul>
+    </div>
+
+    <h2 id="projects" class="fade-section">Projects</h2>
+    <div class="card fade-section">
+      <a
+        class="project-link"
+        href="https://github.com/hunterjames47/hunterjames47/blob/main/Review%20Categorization%20-%20RNN/ReviewCategorization_Report.md"
+        >Review Categorization</a>
+      – For my capstone project, in Python, I utilized RNNs to predict the star rating customers left products 
+      based on the content of the reviews. I then created an application that processes sets of reviews using the trained RNN and assigns them a rating. 
+    </div>
+    <div class="card fade-section">
+      <a
+        class="project-link"
+        href="https://github.com/hunterjames47/hunterjames47/blob/main/Analytics-Projects/Customer%20Churn/Customer%20Churn.md"
+        >Customer Churn</a>
+      – An extended exploratory and predictive analysis of customer churn for a telecommunications company.
+    </div>
+    <div class="card fade-section">
+      <a
+        class="project-link"
+        href="https://github.com/hunterjames47/hunterjames47/blob/main/Analytics-Projects/Customer-Churn-Logistic-Regression/Customer-Churn-Logistic-Regression.md"
+        >Customer Churn - Logistic Regression</a>
+      – A predictive analysis of customer churn utilizing logistic regression with limitations noted and recommendations given.
+    </div>
+    <div class="card fade-section">
+      <a
+        class="project-link"
+        href="https://github.com/hunterjames47/hunterjames47/blob/main/Analytics-Projects/CustomerSegment-KMeans/CustomerSegment-KMeans.md"
+        >Customer Segmentation - K Means</a>
+      – An analysis of customer segmentation using K Means clustering to identify distinct customer groups based on income and monthly charge.
+    </div>
+    <div class="card fade-section">
+      <a
+        class="project-link"
+        href="https://github.com/hunterjames47/hunterjames47/blob/main/Analytics-Projects/Feature-Selection-PCA/Feature-Selection-PCA.md"
+        >Feature Selection- Principal Component Analysis</a>
+      – An analysis of feature selection using Principal Component Analysis (PCA) to reduce dimensionality and improve model performance.
+    </div>
+    <div class="card fade-section">
+      <a
+        class="project-link"
+        href="https://github.com/hunterjames47/hunterjames47/blob/main/Analytics-Projects/Market-Basket-Analysis/Market-Basket-Analysis.md"
+        >Market Basket Analysis</a>
+      – An analysis of market basket data using association rule mining to identify product associations and improve sales strategies.
+    </div>
+    <div class="card fade-section">
+      <a
+        class="project-link"
+        href="https://github.com/hunterjames47/hunterjames47/blob/main/Analytics-Projects/Predicting-Customer-Bandwidth/Predicting-Customer-Bandwidth.md"
+        >Predicting Customer Bandwidth Usage</a>
+      – An analysis of customer bandwidth usage using regression analysis to predict future usage patterns and optimize network resources.
+    </div>
+    <div class="card fade-section">
+      <a
+        class="project-link"
+        href="https://github.com/hunterjames47/hunterjames47/blob/main/Analytics-Projects/Car-Comparison/Car-Comparison.md"
+        >Car Comparison and Dashboard</a>
+      – An exploratory data analysis (EDA) comparing car features and performance metrics with the data presented in Tableau.
+    </div>
+  {% endblock %}
