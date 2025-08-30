@@ -18,7 +18,8 @@ jobs:
           rsync -av --delete \
             --exclude '.env' \
             --exclude 'venv/' \
-            ./ /home/ubuntu/PortfolioFlaskApp/
+            /home/ubuntu/actions-runner/_work/PortfolioFlaskApp/PortfolioFlaskApp/ \
+            /home/ubuntu/PortfolioFlaskApp/
 
       - name: Install dependencies
         run: |
