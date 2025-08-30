@@ -10,14 +10,24 @@ jobs:
     runs-on: self-hosted
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Install dependencies
-      run: |
-        source venv/bin/activate
-        pip install -r requirements.txt
+      - name: Sync files to server (exclude env + venv)
+        run: |
+          rsync -av --delete \
+            --exclude '.env' \
+            --exclude 'venv/' \
+            ./ /home/ubuntu/PortfolioFlaskApp/
 
-    - name: Restart Gunicorn
-      run: |
-        sudo systemctl restart flaskapp
+      - name: Install dependencies
+        run: |
+          cd /home/ubuntu/PortfolioFlaskApp
+          python3 -m venv venv || true
+          source venv/bin/activate
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Restart Gunicorn
+        run: |
+          sudo systemctl restart flaskapp
