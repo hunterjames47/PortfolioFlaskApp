@@ -292,6 +292,29 @@
   text-decoration: underline;
   color: #8e0000;
 }
+
+.flashes {
+  margin: 1em 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.flash {
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.flash.success {
+  background-color: #d4edda;
+  color: #155724
+}
+
+.flash.danger{
+  background-color: #f8d7da;
+  color: #721c24;
+}
 /* Nightmode Button */
 .toggle-theme-btn {
   background-color: #fff;

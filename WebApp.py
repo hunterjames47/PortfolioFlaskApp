@@ -14,16 +14,15 @@ app.register_blueprint(contact_bp)
 db_secret_id=os.getenv("DB_SECRET_ID")
 sendgrid_secret_id=os.getenv("SENDGRID_SECRET_ID")
 DBConn=os.getenv("DB_WEBAPP_CONN")
-
+app.secret_key = os.getenv("FLASK_SECRET_KEY")
 
 db_secrets=config.get_secret(db_secret_id)
 sendgrid_secrets=config.get_secret(sendgrid_secret_id)
-db_user=db_secrets['username']
-db_password=db_secrets['password']
-sendgrid_key=sendgrid_secrets["SENDGRID_API_KEY"]
 
-app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://{db_user}:{db_password}@{DBConn}"
+
+app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://{db_secrets['username']}:{db_secrets['password']}@{DBConn}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config["sendgrid_key"] = sendgrid_secrets["SENDGRID_API_KEY"]
 
 db.init_app(app)
 
@@ -41,6 +40,7 @@ def obfuscate_name(name: str) -> str:
      if len(name) <=2:
           return name[0] + "*"
      return name [0] + "*" * (len(name)-2) + name[-1]
+
 @app.route("/")
 def home():
     all_notes=Note.query.filter_by(active=True).all()

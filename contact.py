@@ -13,9 +13,9 @@ def contact():
         message = request.form["message"]
 
         email_msg = Mail(
-            from_email="your_verified_email@example.com",
-            to_emails="your_email@example.com",
-            subject="New Portfolio Contact",
+            from_email="contact@hire-hunter.com",
+            to_emails="hunterj68@gmail.com",
+            subject=f"New Portfolio Contact - {name}",
             html_content=f"<p><b>{name}</b> ({email}) says:</p><p>{message}</p>"
         )
 
@@ -26,6 +26,6 @@ def contact():
         except Exception as e:
             flash(f"Error: {e}", "danger")
 
-        return redirect(url_for("contact.contact"))
+        return redirect(url_for("home"))
 
-    return render_template("contact.html")
+    return render_template("home")
